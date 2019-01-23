@@ -1,0 +1,11 @@
+ - fields
+ - arquments
+ - aliases
+ - fragments
+ - variables
+
+operation type :
+  - query
+  - mutation
+  - subscription
+
