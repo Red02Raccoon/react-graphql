@@ -1,14 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ApolloClient } from 'apollo-client'; // для создания экземпляра класса клиента
-import { HttpLink } from 'apollo-link-http'; // для настройки клиента
-import { InMemoryCache } from 'apollo-cache-inmemory'; // для настройки клиента
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 
 import './style.css';
+
+const GITHUB_BASE_URL = 'https://api.github.com/graphql';
+const cache = new InMemoryCache();
+
+const httpLink = new HttpLink({
+  uri: GITHUB_BASE_URL,
+  headers: {
+    authorization: `Bearer ${
+      process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN
+    }`,
+  },
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache,
+});
 
 ReactDOM.render(
   <App />,
@@ -16,3 +33,5 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+
+//Connect Data-Layer to View-Layer: Introducing React Apollo
