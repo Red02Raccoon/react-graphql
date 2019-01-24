@@ -2,10 +2,84 @@
  - arquments
  - aliases
  - fragments
+ - inline fragments 
  - variables
+ - default variables
+ - directives
+ - meta fields
 
+  - query
+  - mutation
+
+  - Scalar types
+  - Enumeration types
+
+// Variables
+  ( $episode : Episode! ) - обязательная переменная
+  ( $episode : Episode = JEDI )
+  ( unit: LengthUnit = METER): Float
+
+  $episode - обьявление переменной
+  Episode - тип переменной
+  JEDI - значение по умолчанию
+
+  All declared variables must be either scalars, enums, or input object types
+  
+// Directives
+The core GraphQL specification includes exactly two directives, which must be supported by any spec-compliant GraphQL server implementation
+Server implementations may also add experimental features by defining completely new directives
+  - @include(if: Boolean)
+  - @skip(if: Boolean)
+
+//
+operation name - Think of this just like a function name in your favorite programming language
 operation type :
   - query
   - mutation
   - subscription
 
+// Mutation
+A way to modify server-side data as well.
+Just like in queries, if the mutation field returns an object type, you can ask for nested fields ( of the newly created ).
+While query fields are executed in parallel, mutation fields run in series, one after the other ( ensuring that we don't end up with a race condition with ourselves )
+
+// Inline fragments 
+a type condition
+  query HeroForEpisode($ep: Episode!) {
+    hero(episode: $ep) {
+      name
+      ... on Droid {
+        primaryFunction
+      }
+      ... on Human {
+        height
+      }
+    }
+  }
+
+// Meta fields
+Given that there are some situations where you don't know what type you'll get back from the GraphQL service
+
+"GraphQL schema language" - it's similar to the query language, and allows us to talk about GraphQL schemas in a language-agnostic way.
+
+  type Character {
+    name: String!
+    appearsIn: [Episode!]!
+  }
+
+  - Character - is a GraphQL Object Type
+  - name, appearsIn - are fields on the Character type.
+  - String! -  is one of the built-in scalar types, ! -  means that the field is non-nullable,
+  - [Episode!]! represents an array of Episode objects
+
+//
+Scalar types -  they are the leaves of the query - because those fields don't have any sub-fields
+scalar types out of the box:
+  - Int: A signed 32‐bit integer.
+  - Float: A signed double-precision floating-point value.
+  - String: A UTF‐8 character sequence.
+  - Boolean: true or false.
+  - ID: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
+
+//
+Enumeration types
