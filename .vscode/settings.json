@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "prettier.eslintIntegration": true,
+  "javascript.format.enable": false,
+  "javascript.validate.enable": false,
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    "*.js": "javascriptreact"
+  },
+  "files.eol": "\n",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/web/node_modules": true,
+    "**/web/build": true, // will change frequently by build command
+    "**/admin/node_modules": true
+  },
+}
