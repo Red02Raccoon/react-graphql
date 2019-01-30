@@ -1,0 +1,39 @@
+.RepositoryItem {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.RepositoryItem-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.RepositoryItem-btns {
+  margin-left: auto;
+}
+
+.RepositoryItem-btns button {
+  margin-left: 40px;
+}
+
+.RepositoryItem-title-action {
+  margin-left: 10px;
+}
+
+.RepositoryItem-description {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.RepositoryItem-description-info {
+  margin-right: 20px;
+}
+
+.RepositoryItem-description-details {
+  text-align: right;
+  white-space: nowrap;
+}

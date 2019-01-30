@@ -2,6 +2,7 @@
   "name": "react-graphql-apollo-tutorial-boilerplate",
   "version": "0.1.0",
   "dependencies": {
+    "antd": "^3.13.0",
     "apollo-boost": "^0.1.27",
     "apollo-cache-inmemory": "^1.4.2",
     "apollo-client": "^2.4.12",

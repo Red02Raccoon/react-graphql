@@ -6,9 +6,9 @@ import * as allQuery from "../../../config/query";
 import * as allMutations from "../../../config/mutations";
 
 import Link from "../../Link";
-import Button from "../../Button";
+import Btn from "../../Button";
 
-import "../style.css";
+import "./style.css";
 
 const updateAddStar = (
   client,
@@ -125,13 +125,13 @@ const RepositoryItem = ({
   id
 }) => {
   return (
-    <div>
+    <div className="RepositoryItem">
       <div className="RepositoryItem-title">
         <h2>
           <Link href={url}>{name}</Link>
         </h2>
 
-        <div>
+        <div className="RepositoryItem-btns">
           {!viewerHasStarred ? (
             <Mutation
               mutation={allMutations.STAR_REPOSITORY}
@@ -140,12 +140,12 @@ const RepositoryItem = ({
             >
               {(addStar, { data, loading, error }) => {
                 return (
-                  <Button
+                  <Btn
                     className={"RepositoryItem-title-action"}
                     onClick={addStar}
                   >
                     {`${stargazers.totalCount} Star`}
-                  </Button>
+                  </Btn>
                 );
               }}
             </Mutation>
@@ -157,12 +157,12 @@ const RepositoryItem = ({
                 update={updateRemoveStar}
               >
                 {(removeStar, { data, loading, error }) => (
-                  <Button
+                  <Btn
                     className={"RepositoryItem-title-action"}
                     onClick={removeStar}
                   >
                     {`${stargazers.totalCount} Unstar`}
-                  </Button>
+                  </Btn>
                 )}
               </Mutation>
             </span>
@@ -192,13 +192,13 @@ const RepositoryItem = ({
           update={updateWatch}
         >
           {(updateSubscription, { data, loading, error }) => (
-            <Button
+            <Btn
               className="RepositoryItem-title-action"
               onClick={updateSubscription}
             >
               {watchers.totalCount}{" "}
               {isWatch(viewerSubscription) ? "Unwatch" : "Watch"}
-            </Button>
+            </Btn>
           )}
         </Mutation>
       </div>

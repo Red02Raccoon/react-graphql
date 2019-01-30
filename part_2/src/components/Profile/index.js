@@ -8,7 +8,6 @@ import RepositoryList from "../Repository";
 import ErrorMessage from "../Error";
 
 // HOC
-
 const Profile = ({ data, loading, error }) => {
   if (error) {
     return <ErrorMessage error={error} />;

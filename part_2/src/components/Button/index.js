@@ -1,21 +1,22 @@
 import React from "react";
+import { Button } from "antd";
 
 import "./style.css";
 
-const Button = ({
+const Btn = ({
   children,
   className,
-  color = "black",
+  color = "primary",
   type = "button",
   ...props
 }) => (
-  <button
+  <Button
     className={`${className} Button Button_${color}`}
-    type={type}
+    type={color}
     {...props}
   >
     {children}
-  </button>
+  </Button>
 );
 
-export default Button;
+export default Btn;
